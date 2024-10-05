@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Conversations from './components/conversations'
+import { Conversation } from "./types/conversation";
 
 declare global {
   interface Window {
@@ -13,7 +14,10 @@ declare global {
 export const VoiceRecognition = () => {
   
   const [transcript, setTranscript] = useState<string>('');
-  const [conversation, setConversation] = useState<Array<string>>(['コンビニ', 'コメ']);
+  const [conversation, setConversation] = useState<Array<Conversation>>([
+    {id: 1234567890, text: 'コンビニ'},
+    {id: 2345678901, text: 'コメ'}
+  ]);
   const [message, setMessage] = useState<string>('')
   const [isListening, setIsListening] = useState(false);
 
@@ -32,6 +36,14 @@ export const VoiceRecognition = () => {
     setIsListening(false);
     recognition && recognition.stop();
   };
+
+  const randomNum = () => {
+    let num;
+    for (let i = 0; i < 10; i++){
+      num! += Math.floor(Math.random()*10)
+    }
+    return num
+  }
   
   useEffect(() => {
 
@@ -45,7 +57,7 @@ export const VoiceRecognition = () => {
       recognition.onresult = (event: any) => {
         // console.log(Array.from(event.results));
         const currentTranscript = Array.from(event.results)
-          .map(i => i[0].transcript)
+          .map((i: any) => i[0].transcript)
           .join('');
         setTranscript(currentTranscript);
       };
