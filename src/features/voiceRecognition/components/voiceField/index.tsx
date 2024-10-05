@@ -1,7 +1,8 @@
+import React, { memo } from "react";
 import style from './voice_field.module.scss'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 
-export const VoiceField = (props: {data: string}) => {
+const VoiceField = memo((props: {data: string}) => {
 
   const {data} = props
 
@@ -13,6 +14,8 @@ export const VoiceField = (props: {data: string}) => {
       </div>
     </>
   )
-}
+})
+
+VoiceField.displayName = "VoiceField";
 
 export default VoiceField;
