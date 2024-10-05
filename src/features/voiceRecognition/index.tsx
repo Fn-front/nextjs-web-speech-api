@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Conversations from './components/conversations'
 import { Conversation } from "./types/conversation";
+import style from './index.module.scss'
 
 declare global {
   interface Window {
@@ -15,8 +16,8 @@ export const VoiceRecognition = () => {
   
   const [transcript, setTranscript] = useState<string>('');
   const [conversation, setConversation] = useState<Array<Conversation>>([
-    {id: 1234567890, text: 'コンビニ'},
-    {id: 2345678901, text: 'コメ'}
+    {id: 8747722302, text: 'コンビニ'},
+    {id: 5070858639, text: 'コメ'}
   ]);
   const [message, setMessage] = useState<string>('')
   const [isListening, setIsListening] = useState(false);
@@ -38,11 +39,12 @@ export const VoiceRecognition = () => {
   };
 
   const randomNum = () => {
-    let num;
+    const numArray = [];
     for (let i = 0; i < 10; i++){
-      num! += Math.floor(Math.random()*10)
+      numArray.push(Math.floor(Math.random()*10))
     }
-    return num
+    const result = Number(numArray.join(''))
+    return result
   }
   
   useEffect(() => {
@@ -65,7 +67,12 @@ export const VoiceRecognition = () => {
       // 音声入力終了後の処理
       recognition.onend = () => {
         setIsListening(false);
-        setConversation([...conversation, transcript]);
+        
+        const setData = {
+          id: randomNum(),
+          text: transcript
+        }
+        setConversation([...conversation, setData]);
       };
 
     }
@@ -77,7 +84,7 @@ export const VoiceRecognition = () => {
 
   return (
     <>
-      <div>
+      <div className={style.voice_recognition}>
         <Conversations data={conversation} />
         <button onClick={handleStartListening} disabled={isListening}>音声認識を開始</button><br />
         <button onClick={handleStopListening} disabled={!isListening}>音声認識を停止</button><br />
