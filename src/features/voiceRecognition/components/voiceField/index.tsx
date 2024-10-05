@@ -1,7 +1,7 @@
 import React, { Dispatch, memo, SetStateAction } from "react";
 import style from './voice_field.module.scss'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-import { green, grey } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 
 type Props = {
   data: string
