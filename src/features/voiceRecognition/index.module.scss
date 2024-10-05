@@ -1,5 +1,13 @@
 .voice_recognition{
+  position: relative;
   width: 70vw;
   height: 100%;
   margin: 0 auto;
+}
+
+.voice_recognition_user_area{
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
 }
