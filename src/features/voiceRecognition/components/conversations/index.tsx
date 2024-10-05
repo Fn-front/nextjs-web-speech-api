@@ -10,9 +10,6 @@ export const Conversations = (props: Props) => {
 
   const { data } = props;
 
-  console.log(data);
-  
-
   return (
     <div className={style.voice_recognition_conversations}>
       <ul className={style.voice_recognition_conversations_list}>
