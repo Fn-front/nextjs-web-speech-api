@@ -1,5 +1,5 @@
 .voice_recognition_conversations{
-  padding: 16px 16px 48px;
+  padding: 16px 16px 148px;
 }
 
 .voice_recognition_conversations_list{
@@ -7,11 +7,11 @@
   align-items: flex-end;
   flex-direction: column;
   &_item{
-    min-width: 40%;
     text-align: left;
-    border: 1px solid #fff;
+    border: 1px solid rgba(#fff, .5);
     border-radius: 8px;
-    padding: 8px;
+    padding: 8px 16px;
+    color: rgba(#fff, .8);
     &+.voice_recognition_conversations_list_item{
       margin-top: 32px;
     }
