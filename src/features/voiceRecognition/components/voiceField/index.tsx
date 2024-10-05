@@ -31,7 +31,6 @@ const VoiceField = memo((props: Props) => {
         {!data && <span className={style.placeholder}>マイクアイコンをクリックし、音声入力をおこなってください</span>}
         <button
           className={style.voice_recognition_icon}
-          disabled={isListening}
           onClick={() => !isListening ? handleStartListening() : handleStopListening()}
         >
           <KeyboardVoiceIcon fontSize='large' style={{fontSize: '2.7875rem'}} sx={{color: !isListening ? "white" : grey[700]}} />
