@@ -78,3 +78,13 @@ a {
 summary {
   cursor: pointer;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

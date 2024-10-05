@@ -1,0 +1,21 @@
+.voice_recognition_voice_field{
+  position: relative;
+  border: 1px solid rgba(#fff, .5);
+  border-radius: 100px;
+  min-height: 60px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.voice_recognition_icon{
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.placeholder{
+  color: rgba(#fff, .5);
+}

@@ -1,0 +1,25 @@
+.voice_recognition{
+  position: relative;
+  width: 70vw;
+  max-width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.voice_recognition_user_area{
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  width: 80vw;
+  max-width: 900px;
+  transform: translateX(-50%);
+  background-color: rgb(var(--color-black));
+  z-index: 100;
+  border-radius: 100px;
+}
+
+.voice_overlay{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(#000, .6);
+}
