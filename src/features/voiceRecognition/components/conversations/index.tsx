@@ -1,5 +1,6 @@
 import { text } from "stream/consumers";
 import { Conversation } from "../../types/conversation";
+import style from './conversations.module.scss'
 
 type Props = {
   data: Array<Conversation>
@@ -13,13 +14,15 @@ export const Conversations = (props: Props) => {
   
 
   return (
-    <>
-      {data.map((item) => {
-        return(
-          <p key={item.id}>{ item.text }</p>
-        )
-      })}
-    </>
+    <div className={style.voice_recognition_conversations}>
+      <ul className={style.voice_recognition_conversations_list}>
+        {data.map((item) => {
+          return(
+            <li key={item.id} className={style.voice_recognition_conversations_list_item}>{ item.text }</li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 
