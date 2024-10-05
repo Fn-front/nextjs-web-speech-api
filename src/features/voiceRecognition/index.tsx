@@ -46,6 +46,8 @@ export const VoiceRecognition = () => {
   
   useEffect(() => {
 
+    scrollBottom();
+
     if (recognition) {
       // 言語設定
       recognition.lang = 'ja-JP';
