@@ -28,17 +28,6 @@ export const VoiceRecognition = () => {
     return typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition) ? new (window.SpeechRecognition || window.webkitSpeechRecognition)() : null;
   }, [])
 
-  
-  const handleStartListening = () => {
-    setIsListening(true);
-    recognition && recognition.start();
-  };
-  
-  const handleStopListening = () => {
-    setIsListening(false);
-    recognition && recognition.stop();
-  };
-
   const randomNum = () => {
     const numArray = [];
     for (let i = 0; i < 10; i++){
@@ -81,6 +70,7 @@ export const VoiceRecognition = () => {
           text: transcript
         }
         setConversation([...conversation, setData]);
+        setTranscript('');
         scrollBottom()
       };
 
@@ -97,12 +87,11 @@ export const VoiceRecognition = () => {
         <Conversations data={conversation} />
         <div ref={scrollBottomRef} />
         <div className={style.voice_recognition_user_area}>
-          <VoiceField data={transcript}/>
-          <button onClick={handleStartListening} disabled={isListening}>音声認識を開始</button><br />
-          <button onClick={handleStopListening} disabled={!isListening}>音声認識を停止</button><br />
+          <VoiceField data={transcript} recognition={recognition} setIsListening={setIsListening} isListening={isListening}/>
         </div>
         <p>{ message }</p>
       </div>
+      {isListening && <article className={style.voice_overlay} />}
     </>
   )
 }
