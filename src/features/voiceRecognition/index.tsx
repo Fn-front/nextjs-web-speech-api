@@ -28,6 +28,7 @@ export const VoiceRecognition = () => {
     return typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition) ? new (window.SpeechRecognition || window.webkitSpeechRecognition)() : null;
   }, [])
 
+  // id用乱数
   const randomNum = () => {
     const numArray = [];
     for (let i = 0; i < 10; i++){
@@ -37,6 +38,7 @@ export const VoiceRecognition = () => {
     return result
   }
 
+  // ページスクロール
   const scrollBottom = () => {
     const set = setTimeout(() => {
       scrollBottomRef?.current?.scrollIntoView();
@@ -51,6 +53,7 @@ export const VoiceRecognition = () => {
     if (recognition) {
       // 言語設定
       recognition.lang = 'ja-JP';
+
       // 音声認識の途中の結果を返却するかどうか、デフォルトはfalse
       recognition.interimResults = true;
 
@@ -71,7 +74,11 @@ export const VoiceRecognition = () => {
           text: transcript
         }
         setConversation([...conversation, setData]);
+
+        //音声認識が終わったらユーザー入力エリアをクリア 
         setTranscript('');
+
+        //吹き出しが見きれないように下にスクロール
         scrollBottom()
       };
 
