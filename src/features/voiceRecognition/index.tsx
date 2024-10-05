@@ -54,7 +54,6 @@ export const VoiceRecognition = () => {
 
       // 音声入力の結果が返ってくる
       recognition.onresult = (event: any) => {
-        // console.log(Array.from(event.results));
         const currentTranscript = Array.from(event.results)
           .map((i: any) => i[0].transcript)
           .join('');
