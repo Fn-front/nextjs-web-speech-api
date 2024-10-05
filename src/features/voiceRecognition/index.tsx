@@ -5,7 +5,7 @@ import Conversations from './components/conversations'
 import { Conversation } from "./types/conversation";
 import style from './index.module.scss'
 import VoiceField from "./components/voiceField";
-import { voiceConversation } from './constants/data'
+import { voiceConversation } from './constants/data';
 
 declare global {
   interface Window {
