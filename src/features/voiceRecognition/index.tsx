@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Conversations from './components/conversations'
 import { Conversation } from "./types/conversation";
 import style from './index.module.scss'
@@ -14,6 +14,8 @@ declare global {
 }
 
 export const VoiceRecognition = () => {
+
+  const scrollBottomRef = useRef<HTMLDivElement>(null);
   
   const [transcript, setTranscript] = useState<string>('');
   const [conversation, setConversation] = useState<Array<Conversation>>([
@@ -56,6 +58,13 @@ export const VoiceRecognition = () => {
     const result = Number(numArray.join(''))
     return result
   }
+
+  const scrollBottom = () => {
+    const set = setTimeout(() => {
+      scrollBottomRef?.current?.scrollIntoView();
+      clearTimeout(set);
+    },1)
+  }
   
   useEffect(() => {
 
@@ -83,6 +92,7 @@ export const VoiceRecognition = () => {
           text: transcript
         }
         setConversation([...conversation, setData]);
+        scrollBottom()
       };
 
     }
@@ -96,6 +106,7 @@ export const VoiceRecognition = () => {
     <>
       <div className={style.voice_recognition}>
         <Conversations data={conversation} />
+        <div ref={scrollBottomRef} />
         <div className={style.voice_recognition_user_area}>
           <VoiceField data={transcript}/>
           <button onClick={handleStartListening} disabled={isListening}>音声認識を開始</button><br />
